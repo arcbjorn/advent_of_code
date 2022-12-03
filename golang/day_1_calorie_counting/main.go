@@ -45,18 +45,6 @@ func getPacks(filename string) []int {
 	return packs
 }
 
-func findMaxPack(packs []int) int {
-	var maxAmount int
-
-	for _, amount := range packs {
-		if amount > maxAmount {
-			maxAmount = amount
-		}
-	}
-
-	return maxAmount
-}
-
 func getMaxPacks(packs []int) (maxPack int, last3Sum int) {
 	sort.Ints(packs[:])
 	last3 := packs[len(packs)-3:]
