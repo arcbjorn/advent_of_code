@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"sort"
 	"strconv"
 )
 
@@ -56,11 +57,25 @@ func findMaxPack(packs []int) int {
 	return maxAmount
 }
 
+func getMaxPacks(packs []int) (maxPack int, last3Sum int) {
+	sort.Ints(packs[:])
+	last3 := packs[len(packs)-3:]
+
+	// 66487
+	maxPack = packs[len(packs)-1]
+
+	for _, amount := range last3 {
+		// 197301
+		last3Sum += amount
+	}
+
+	return maxPack, last3Sum
+}
+
 func main() {
 	filename := os.Args[2]
 	packs := getPacks(filename)
-	maxPack := findMaxPack(packs)
+	maxPack, last3Sum := getMaxPacks(packs)
 
-	// 66487
-	fmt.Println(maxPack)
+	fmt.Println(maxPack, last3Sum)
 }
