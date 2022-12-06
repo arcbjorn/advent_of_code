@@ -91,17 +91,11 @@ func calculateTotalScore(filename string) int {
 		opponentShape := line[0:1]
 		myShape := line[2:3]
 
-		fmt.Println(line)
-		fmt.Println("--------")
-
 		shapeScore := getShapeScore(myShape)
-		fmt.Println(shapeScore)
 
 		pairResult := getPairResult(opponentShape, myShape)
-		fmt.Println(pairResult)
 
 		totalScore = totalScore + shapeScore + pairResult
-		fmt.Println(totalScore)
 	}
 
 	return totalScore
